@@ -9,4 +9,4 @@ console.log($( 'li[class="current bar"]').removeAttr('class').next().attr('class
 console.log( $ ( '#specials :submit'));
 
 console.log($ ('#slideshow li:nth-child(1)').attr('class', 'current'));
-console.log($ ('#slideshow li:nth-child(1)').siblings().attr('class', 'diabled'));
+console.log($ ('#slideshow li:nth-child(1)').siblings().attr('class', 'disabled'));
