@@ -1,0 +1,51 @@
+$(document).ready(function() {
+
+	$ ('body').prepend($ ('#slideshow'));
+
+	$ ('#slideshow li').hide();
+      
+	navigation = $ ('<div><div/>').insertAfter( $ ('#slideshow') );
+
+	var current = 1;
+	var length = 0;
+ 
+	$('#slideshow li:first').fadeIn();
+
+	length = $("#slideshow li").size();
+
+	element = $("#slideshow li");
+
+	navigator = function(count) {
+			navigation.text(count + ' of ' + length + ' images');
+		}  console.log($("#slideshow li").lastChild()	);
+
+	    slide_int = setInterval(function() {
+
+	    	     
+
+	      element.fadeOut(1500, function () { 
+
+	      if ($(this).next()==$(this).last()) {
+		  $(this).next()=$(this).first()
+	      } 
+
+            current++;
+ 
+	      $(this).next().fadeIn(1500).delay(3000);
+
+	     
+
+	      });
+
+	      }, 5000);
+
+ });
+
+
+   
+  
+
+
+  
+   
+  
