@@ -1,36 +1,48 @@
 <html>
-  <head>
+<head>
 <style type="text/css">
-.new-div { width:300px;height:50px;text-align:center;background-color:yellow;margin:5px;}
+
+.stack_item { 
+width:250px;
+height:50px;
+margin:3px;
+text-align:center;
+background-color:grey;
+}
 
 </style>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-   $('document').ready(function(){
-     $body = $('body')
-     $main_div = $body.find("div#main")
-     var count = 0
-     $("button").click(function(){
-         count++;
-         $div = $('<div class="new-div">'+count+'</div>')
-         $main_div.append($div)
-       })
-     $('div').delegate(".new-div","click",function(){
-if($(this).is($('div.new-div:last-child'))){
-                 $(this).remove()
-                 count--
-                 }else{
-                  $(this).attr("style","border:solid")
-                 }
+  $('document').ready(function(){
+    $stack = $("#stack");
+    var count = 0;
+    $('button').click(function () {
+      count++;
+      $stack_item = $('<div>' + count + '</div>');
+      $stack_item.addClass("stack_item");
+      $stack.prepend($stack_item);
+    });
+    $('div.stack_item').live("click", function () {
+      if ($(this)[0] == $('div.stack_item:first-child')[0]) {
+        $(this).remove();
+        count--;
+      } else {
+          $(this).attr('style', 'border:solid 2px black');
+      }
 
-})
+});
      });
 </script>
+
 </head>
+
 <body>
 	
-		<div id="main" align="right">
+		<div align="right">
 			<button type="button">Add item</button>
+		</div>
+		<div id="stack" align="right">
 		</div>
 	
 </body>
