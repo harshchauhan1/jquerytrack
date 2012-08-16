@@ -14,6 +14,4 @@
     $ ('div.module:last select option:eq(2)' ).after('<option value="wednesday">wednesday</option>');
     console.log( $('div.module:last  select option:eq(3)'));
 
-    $ ('div.module:last').after('<div class = "module" id="last_div"></div>');
-    $ ( '#last_div').append('<img src="images/fruit.jpg" alt="fruit" />');
-    console.log( $ ('#last_div'));
+    console.log($ ('div.module:last').after('<div class="module"></div>').append($('img:first').clone()));
