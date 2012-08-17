@@ -7,33 +7,34 @@ $(document).ready(function() {
 	navigation = $ ('<div><div/>').insertAfter( $ ('#slideshow') );
 
 	var current = 1;
+
 	var length = 0;
  
-	$('#slideshow li:first').fadeIn();
+	$ ('#slideshow li:first').fadeIn();
 
-	length = $("#slideshow li").size();
-
-	element = $("#slideshow li");
+	length = $ ("#slideshow li").size();
 
 	navigator = function(count) {
-			navigation.text(count + ' of ' + length + ' images');
-		}  console.log($("#slideshow li").lastChild()	);
+		       navigation.text(count + ' of ' + length + ' images');
+		    }
 
-	    slide_int = setInterval(function() {
+	slide_int = setInterval(function() {
 
-	    	     
+	    	                  navigator(current);
 
-	      element.fadeOut(1500, function () { 
+	                          $ ("#slideshow li:nth-child(" + current + ")").fadeOut(1500, function () { 
 
-	      if ($(this).next()==$(this).last()) {
-		  $(this).next()=$(this).first()
-	      } 
+	                                                                                         if (current == length) {
+		                      
+                                                                                                     current=0;
 
-            current++;
+	                                                                                         } 
+
+                                  current++;
  
-	      $(this).next().fadeIn(1500).delay(3000);
+	                          $("#slideshow li:nth-child(" + current + ")").fadeIn(1500).delay(3000);
 
-	     
+	                          navigator(current);
 
 	      });
 
