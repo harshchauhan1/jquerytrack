@@ -1,16 +1,7 @@
 $(document).ready(function() {
-        var data;
-        var cache = null;
-        $.ajax ({
-                                url : 'data/specials.json',
-				type : 'GET',
-				dataType : 'json',
-				success : function(specials) { 
-					  data = specials; console.log(data["monday"]);
-                                }
-		       });
-		
-
+        
+        cache = null;
+        		
         var $specials = $ ('#specials');
 	
 	$specials.find('li.buttons').remove();
@@ -22,12 +13,28 @@ $(document).ready(function() {
         
 	var $select = $specials.find('select').change(function () {
                           var day = $select.val();
-                          $target.empty(); 
-                          set_details(data, day);});
+                          $target.empty();
+                          if (cache != null) { console.log(cache);
+                          set_details(day);
+                          } else {  
+                          $.ajax ({
+                                url : 'data/specials.json',
+				type : 'GET',
+				dataType : 'json',
+				success : function(specials) {
+                                          cache = specials;
+                                          set_details(day);
+                                          }
+		          });
+                          
+                          
+                            }
+                            });
+
 
 	
-        var set_details = function (data, day) {
-                          var details = data[day];                                                                   
+        var set_details = function (day) {
+                          var details = cache[day];                                                                   
 			  var $heading = $ ('<h3>' + details.title + '</h3>');
                           var $text = $ ('<p>' + details.text + '</p>');
                           var $image = $ ('<img/>');
