@@ -14,27 +14,25 @@ $(document).ready(function() {
 	var $select = $specials.find('select').change(function () {
                           var day = $select.val();
                           $target.empty();
-                          if (cache != null) { console.log(cache);
-                          set_details(day);
+                          if (cache != null) {
+                              details = cache[day];
+                              set_details(day);
                           } else {  
-                          $.ajax ({
-                                url : 'data/specials.json',
-				type : 'GET',
-				dataType : 'json',
-				success : function(specials) {
-                                          cache = specials;
-                                          set_details(day);
-                                          }
-		          });
-                          
-                          
-                            }
-                            });
+                              $.ajax ({
+                                  url : 'data/specials.json',
+				  type : 'GET',
+				  dataType : 'json',
+				  success : function(specials) {
+                                              cache = specials;
+                                              details = cache[day];
+                                              set_details(day);
+                                            }
+		              });
+                          }
+                      });
 
-
-	
         var set_details = function (day) {
-                          var details = cache[day];                                                                   
+                                                                                             
 			  var $heading = $ ('<h3>' + details.title + '</h3>');
                           var $text = $ ('<p>' + details.text + '</p>');
                           var $image = $ ('<img/>');

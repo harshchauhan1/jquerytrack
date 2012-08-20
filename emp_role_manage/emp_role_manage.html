@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type ="text/css">
+
+#roles_div {
+width:130px;
+height:auto;
+border:solid 2px black;
+position:relative;
+top:100px;
+right:-50px;
+box-shadow:2px 2px 5px #888888;
+float:left
+} 
+
+#emp_div {
+width:130px;
+height:auto;
+border:solid 2px black;
+position:fixed;
+top:100px;
+left:250px;
+box-shadow:2px 2px 5px #888888;
+float:left
+}
+
+#todos_div {
+width:530px;
+height:auto;
+border:solid 2px black;
+position:relative;
+top:100px;
+right:-300px;
+box-shadow:2px 2px 5px #888888;
+float:left;
+text-align:center;
+}
+
+.sub_div {
+position:relative;
+border-bottom:solid 1px black;
+text-align:center;
+float:bottom;  !important
+height:35px;	
+}
+
+.to_hide {
+display:none;
+}
+
+</style>
+
+
+<script src="jquery-1.7.2.min.js"></script>
+<script src="jquery-ui-1.8.23.custom.min.js"></script>
+<script src="emp.js"></script>
+</head>
+
+
+<body>
+
+
+	<div id="roles_div">
+        	<div id="ror" class="sub_div"><u>ROR</u></div>
+        	<div id="jsquery" class="sub_div"><u>JSQUERY</u></div>
+        	<div id="android" class="sub_div"><u>ANDROID</u></div>
+	</div>
+
+	<div id="emp_div">
+		<div id="emp_head" style="border-bottom:solid 2px black">EMPLOYEES</div>
+		<div id="harsh" class="sub_div">akshay</div>
+		<div id="harsh" class="sub_div">ayush</div>
+		<div id="harsh" class="sub_div">abhishek</div>
+		<div id="harsh" class="sub_div">aditya</div>
+		<div id="harsh" class="sub_div">harsh</div>
+		<div id="harsh" class="sub_div">kd</div>
+		<div id="harsh" class="sub_div">nishant</div>        
+	</div>
+																		
+	<div id="todos_div">
+		<div  style="border-bottom:solid 2px black"><b>TODOS</b></div>
+		<div class="sub_div" id="ror1"><u>ROR</u><input type="image" src="plus.png" align="right"></input><input type="image" src="minus.png" class="to_hide" align="right"></input>
+                	<div id="ror2" class="to_hide"></div>
+                </div>
+		<div class="sub_div" id="jsquery1"><u>JSQUERY</u><input type="image" src="plus.png" align="right"></input><input type="image" src="minus.png" class="to_hide" align="right"></input>
+			<div id="jsquery2" class="to_hide"></div>
+		</div>
+		<div class="sub_div" id="android1"><u>ANDROID</u><input type="image" src="plus.png" align="right"></input><input type="image" src="minus.png" class="to_hide" align="right"></input>
+			<div id="android2" class="to_hide"></div>
+		</div>
+	</div>	
+
+
+</body>
+</html>	
+
+

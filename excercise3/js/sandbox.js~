@@ -3,7 +3,7 @@
     new_items.push('<li>item' + i + '</li>');
     }
     $ ( '#myList' ).append(new_items.join( '' ));
-    console.log($ ( '#myList' ));
+    console.log($ ( '#myList li:first' ));
 
     console.log($('#myList').find("li:odd").remove());
 

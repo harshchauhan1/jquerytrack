@@ -15,7 +15,8 @@ $(document).ready(function() {
                           var day = $select.val();
                           $target.empty();
                           if (cache != null) {
-                              set_details(day);
+                              details = cache[day];
+                              set_details(details);
                           } else {  
                               $.ajax ({
                                   url : 'data/specials.json',
@@ -23,14 +24,14 @@ $(document).ready(function() {
 				  dataType : 'json',
 				  success : function(specials) {
                                               cache = specials;
-                                              set_details(day);
+                                              details = cache[day];
+                                              set_details(details);
                                             }
 		              });
                           }
                       });
 
-        var set_details = function (day) {
-                          var details = cache[day];                                                                   
+        var set_details = function (details) {                                            
 			  var $heading = $ ('<h3>' + details.title + '</h3>');
                           var $text = $ ('<p>' + details.text + '</p>');
                           var $image = $ ('<img/>');
