@@ -21,7 +21,7 @@ $ ('#roles_div div').droppable({
                         $('input[src="cross_circle.png"]').click( function () {
                                                           alert("do you want to remove this");
                                                           $(this).closest('div').remove();
-                                                          console.log($('#' +id+'2').find('div[name='+ ui.draggable.text() + ']'));
+                                                          $('#' +id+'2').find('div[name='+ ui.draggable.text() + ']').remove();
                                                           
                                             
                                    });
