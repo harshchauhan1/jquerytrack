@@ -1,16 +1,17 @@
 $('document').ready(function () {
-    var emp_data = [];
-    count = 0;
     $('#emp_div .sub_div').draggable({
         revert: true
     });
+
     $('#roles_div div').droppable({
         drop: function (event, ui) {
             id = $(this).attr('id');
-            count = count + 1;
-            emp_data.push(ui.draggable.text());
-            var a = $('<div class="sub_div" name=' + ui.draggable.text() + '>' + ui.draggable.text() + '<input type="image" src="cross_circle.png" class="to_hide" align="right"></input></div>');
+            var a = $('<div name=' + ui.draggable.text() + '>' + ui.draggable.text() + '</div>');
+            var c = $('<input type="image" src="cross_circle.png" class="to_hide" align="right"></input>');
+            c.bind('click', delete_entry);
             a.addClass("to_cross");
+            a.append(c);
+            console.log(a);
 
             if (!($(this).find('div[name=' + ui.draggable.text() + ']')[0])) {
                 $(this).append(a);
@@ -28,37 +29,38 @@ $('document').ready(function () {
                     $(this).find('input').addClass("to_hide");
                 });
             });
-            $('input[src="cross_circle.png"]').click(function () {
-                alert("do you want to remove this");
-                $(this).closest('div').remove();
-                $('#' + id + '2').find('div[name=' + ui.draggable.text() + ']').remove();
 
-
-            });
-
+            
 
         }
 
     });
 
+    function delete_entry() { 
+        var answer = confirm("do you want to remove this");
+	if(answer) {
+            var name = $(this).closest('div').attr('name');
+            var index = $(this).closest('div').parent().attr('id');
+            $('#' + index + '2').find('div[name=' + name + ']').remove();
+            $(this).closest('div').remove();
+	}
+        if( $('#' + index + '2').is(':empty') ) {
+            $('#' + index + '2').prev().find($('input[src="plus.png"]')).removeClass("to_hide");
+	    $('#' + index + '2').prev().find($('input[src="minus.png"]')).addClass("to_hide");
+        }
+    }
+ 
     $('input[src="plus.png"]').click(function () {
-        $(this).closest('div').find('div').removeClass("to_hide");
+        $(this).closest('div').next().removeClass("to_hide");
         $(this).addClass("to_hide");
         $(this).next().removeClass("to_hide");
     });
 
     $('input[src="minus.png"]').click(function () {
-        $(this).closest('div').find('div').addClass("to_hide");
+        $(this).closest('div').next().addClass("to_hide");
         $(this).addClass("to_hide");
         $(this).prev().removeClass("to_hide");
     });
-
-
-
-
-
-
-
 
 
 });
